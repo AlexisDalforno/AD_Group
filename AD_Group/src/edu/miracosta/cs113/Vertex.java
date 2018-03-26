@@ -2,7 +2,7 @@ package edu.miracosta.cs113;
 
 /**
  * Vertex.java is one of the essential components to a graph. Gives an ID and Name to 
- * each point in the graph.
+ * each point in the graph.adfas
  * 
  * @author Alexis Dalforno
  * @version 1.0
