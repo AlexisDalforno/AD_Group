@@ -8,7 +8,17 @@ package edu.miracosta.cs113;
  * 
  */
 
+
+
 public class DijkstrasAlgorithm 
 {
-
+	private Graph graph;
+	private int start;
+	private int[] pred;
+	double[] dist;
+	
+	public void dijkstrasAlgorithm()
+	{
+		int numV = graph.get
+	}
 }

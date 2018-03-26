@@ -45,4 +45,25 @@ public class Graph
 	{
 		this.edges = edges;
 	}
+	
+	// ACCESSOR METHODS
+	/**
+	 * Return the number of vertices.
+	 * 
+	 * @return number of vertices
+	 */
+	public int getNumV()
+	{
+		return vertexes.size();
+	}
+	
+	/**
+	 * Inserts a new edge into the graph.
+	 * 
+	 * @param edge the new edge to insert
+	 */
+	public void insert(Edge edge)
+	{
+		edges.add(edge);
+	}
 }
