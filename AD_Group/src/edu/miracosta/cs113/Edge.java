@@ -10,57 +10,53 @@ package edu.miracosta.cs113;
 
 public class Edge 
 {
-    private String id;
-    private Vertex source;
-    private Vertex destination;
-    private int weight;
 
-    // FULL CONSTRUCTOR
-    public Edge(String id, Vertex source, Vertex destination, int weight) 
+    private int source;
+    private int destination;
+    private double weight;
+
+    // DEFAULT WEIGHT CONSTRUCTOR
+    public Edge(int source, int destination) 
     {
-        setId(id);
+        setSource(source);
+        setDestination(destination);
+        setWeight(1.0);
+    }
+    // FULL CONSTRUCTOR
+    public Edge(int source, int destination, double weight) 
+    {
         setSource(source);
         setDestination(destination);
         setWeight(weight);
     }
-    
-    // GETTERS
-    public String getId() 
-    {
-        return id;
-    }
 
-	public Vertex getDestination() 
+    // GETTERS
+	public int getDestination() 
 	{
         return destination;
     }
 
-    public Vertex getSource() 
+    public int getSource() 
     {
         return source;
     }
-    public int getWeight() 
+    public double getWeight() 
     {
         return weight;
     }
     
     // SETTERS
-    public void setId(String id) 
-    {
-		this.id = id;
-	}
-
-	public void setSource(Vertex source) 
+	public void setSource(int source) 
 	{
 		this.source = source;
 	}
 
-	public void setDestination(Vertex destination) 
+	public void setDestination(int destination) 
 	{
 		this.destination = destination;
 	}
 
-	public void setWeight(int weight) 
+	public void setWeight(double weight) 
 	{
 		this.weight = weight;
 	}
