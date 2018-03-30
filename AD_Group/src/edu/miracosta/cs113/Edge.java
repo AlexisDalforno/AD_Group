@@ -10,20 +10,19 @@ package edu.miracosta.cs113;
 
 public class Edge 
 {
-
-    private int source;
-    private int destination;
+    private Vertex source;
+    private Vertex destination;
     private double weight;
 
     // DEFAULT WEIGHT CONSTRUCTOR
-    public Edge(int source, int destination) 
+    public Edge(Vertex source, Vertex destination) 
     {
         setSource(source);
         setDestination(destination);
         setWeight(1.0);
     }
     // FULL CONSTRUCTOR
-    public Edge(int source, int destination, double weight) 
+    public Edge(Vertex source, Vertex destination, double weight) 
     {
         setSource(source);
         setDestination(destination);
@@ -31,12 +30,12 @@ public class Edge
     }
 
     // GETTERS
-	public int getDestination() 
+	public Vertex getDestination() 
 	{
         return destination;
     }
 
-    public int getSource() 
+    public Vertex getSource() 
     {
         return source;
     }
@@ -46,12 +45,12 @@ public class Edge
     }
     
     // SETTERS
-	public void setSource(int source) 
+	public void setSource(Vertex source) 
 	{
 		this.source = source;
 	}
 
-	public void setDestination(int destination) 
+	public void setDestination(Vertex destination) 
 	{
 		this.destination = destination;
 	}
@@ -60,6 +59,35 @@ public class Edge
 	{
 		this.weight = weight;
 	}
+	
+	/**
+	 * Creates bucket number for storing elements.
+	 * 
+	 * @return bucket number
+	 */
+	public int hashCode() 
+    {
+		return (this.source.hashCode() + this.destination.hashCode());
+    }
+	
+	/**
+	 * Compares two different Edge objects by looking at their variables.
+	 * 
+	 * @param obj: other object to be compared
+	 * @return a boolean based on whether its the same
+	 */
+	public boolean equals(Object obj) 
+    {
+    	if (obj == null || this.getClass() != obj.getClass()) 
+		{
+			return false;
+		}
+    	
+        Edge otherEdge = (Edge) obj;
+        
+        return (this.source != otherEdge.source || this.destination != otherEdge.destination 
+        		|| this.weight != otherEdge.weight);
+    }
 
 	/**
 	 * Prints out the variables in a formatted manner.
