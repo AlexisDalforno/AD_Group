@@ -12,33 +12,21 @@ package edu.miracosta.cs113;
 public class Vertex 
 {
 	// INSTANCE VARIABLES
-	private String id;
     private String name;
     
     // FULL CONSTRUCTOR
-    public Vertex(String id, String name) 
+    public Vertex(String name) 
     {
-        setId(id);
         setName(name);
     }
     
     // GETTERS
-    public String getId() 
-    {
-        return id;
-    }
-
     public String getName() 
     {
         return name;
     }
  
     // SETTERS
-    public void setId(String id) 
-    {
-		this.id = id;
-	}
-
 	public void setName(String name) 
 	{
 		this.name = name;
@@ -51,14 +39,7 @@ public class Vertex
 	 */
 	public int hashCode() 
     {
-        int result = 0;
-        
-        if(id != null)
-        {
-        	result = 31 + id.hashCode();
-        }
-        
-        return result;
+		return this.name.hashCode();
     }
 
 	/**
@@ -76,7 +57,7 @@ public class Vertex
     	
         Vertex otherVertex = (Vertex) obj;
         
-        return (this.id != otherVertex.id || this.name != otherVertex.name);
+        return (this.name != otherVertex.name);
     }
 
 	/**
@@ -88,4 +69,6 @@ public class Vertex
     {
         return name;
     }
+
+	
 }
