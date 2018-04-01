@@ -21,6 +21,7 @@ public class Edge
         setDestination(destination);
         setWeight(1.0);
     }
+    
     // FULL CONSTRUCTOR
     public Edge(Vertex source, Vertex destination, double weight) 
     {
@@ -96,6 +97,7 @@ public class Edge
 	 */
     public String toString() 
     {
-        return source + " to " + destination + " has a weight of " + weight + ".";
+        return source + " to " + destination + " has a weight of " + weight;
     }
+   
 }
