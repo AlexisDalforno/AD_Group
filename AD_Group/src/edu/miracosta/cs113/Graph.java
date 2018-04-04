@@ -223,4 +223,25 @@ public class Graph
     	
     	return null;
     }
+    
+	/**
+	 * Helper method to find the starting vertex to be used to find the shortest path.
+	 * 
+	 * PRECONDITION: Position reference of starting vertex MUST be set to 0.
+	 * 
+	 * @param graph Graph to be searched through
+	 * @return vertex with positionRef at 0
+	 */
+    public static Vertex findStart(Graph graph)
+    {	
+    	for(int i = 0; i < graph.getNumV(); i++)
+    	{
+    		if(graph.getVertices().get(i).getPositionRef() == 0)
+    		{
+    			return graph.getVertices().get(i);
+    		}
+    	}
+    	
+		return null;
+    }
 }

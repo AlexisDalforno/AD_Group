@@ -13,23 +13,36 @@ public class Vertex
 {
 	// INSTANCE VARIABLES
     private String name;
+    private int positionReference;
     
     // FULL CONSTRUCTOR
-    public Vertex(String name) 
+    public Vertex(String name, int pr) 
     {
         setName(name);
+        setPositionRef(pr);
     }
-    
-    // GETTERS
+
+	// GETTERS
     public String getName() 
     {
         return name;
+    }
+    
+    public int getPositionRef()
+    {
+    	return positionReference;
     }
  
     // SETTERS
 	public void setName(String name) 
 	{
 		this.name = name;
+	}
+	
+    private void setPositionRef(int pr) 
+    {
+		this.positionReference = pr;
+		
 	}
 
 	/**
@@ -57,7 +70,7 @@ public class Vertex
     	
         Vertex otherVertex = (Vertex) obj;
         
-        return (this.name != otherVertex.name);
+        return (this.name != otherVertex.name || this.positionReference != otherVertex.positionReference);
     }
 
 	/**
