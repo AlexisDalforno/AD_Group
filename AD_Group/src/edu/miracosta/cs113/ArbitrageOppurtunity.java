@@ -5,6 +5,11 @@ import java.util.Map;
 
 public class ArbitrageOppurtunity 
 {
+	public static void main(String args[])
+	{
+		System.out.println("Welcome to Investment Intelligence, where we help you make the best\n investment"
+				+ " choices for you!");
+	}
 	
 	
 	/**
@@ -75,6 +80,25 @@ public class ArbitrageOppurtunity
     				largestProfit = u;
     			}
     		}
+    		
+    		start = largestProfit;
+    		vMinusS.remove(largestProfit);
+    		
+    		for(Vertex v : vMinusS)
+        	{
+        		pred.put(v, start);
+        		
+        		if(graph.doesEdgeExist(start, v))
+        		{
+        			dist.put(v, graph.getWeight(start, v));
+        		}
+        		else
+        		{
+        			dist.put(v, 1.0);
+        		}
+        	}
+    		
+    		count++;
     	}
     }
 }
