@@ -1,5 +1,36 @@
 package edu.miracosta.cs113;
 
+/**
+ * ArbitrageOppurtunity.java is the driver of this project. It holds the method
+ * of the implemented Dijkstras algorithm as well as all the code necessary
+ * to have the user find the best way to make profit through the transfer of 
+ * foreign currencies.
+ * 
+ * @author Alexis Dalforno
+ * @version 1.0
+ * 
+ * ALGORITHM: 
+ * 1. Read in the file of foreign currency transaction rates
+ * 2. Fill in the lists of edges and vertices with the transaction rate
+ *    and the names of the currency respectively
+ * 3. Introduce the user to the program and what it does and then ask for the
+ *    currency they would like to use to make a profit on
+ * 4. Read in user input
+ * 5. Switch case that sets the currency name with chosen currency and sets
+ *    the vertex named after currency name to a position of 0 for dijkstras 
+ *    algorithm
+ * 6. Create the graph as well as the pred and dist map for dijkstras algorithm
+ * 7. Call the algorithm
+ * 8. Relay to the user how to make profit based on shortest path found by dijkstras
+ * 	  algorithm
+ * 9. Prompt the user to see how much profit could be made with a certain amount of 
+ *    money
+ * 10. Use the profit returned from dijkstras algorithm to find the profit possible
+ *     based on shortest path
+ * 11. Exit the program as there is nothing left to do
+ */
+
+// IMPORTS
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -77,8 +108,9 @@ public class ArbitrageOppurtunity
 				+ "\n\nWe apologize if you don't see your currency above, input 0 to exit. Otherwise, input the number"
 				+ "\ncorresponding to the correct currency.");
 		int userInput = keyboard.nextInt();
-		keyboard.close();
+
 		
+		// which currency?
 		switch(userInput)
 		{
 			case 0: System.exit(0);
@@ -87,18 +119,25 @@ public class ArbitrageOppurtunity
 					currencyName = "USD"; 
 					break;
 			case 2: listOfVertices.get(1).setPositionRef(0);
+					currencyName = "EUR";
 					break;
 			case 3: listOfVertices.get(2).setPositionRef(0);
+					currencyName = "JPY";
 					break;
 			case 4: listOfVertices.get(3).setPositionRef(0);
+					currencyName = "GBP";
 					break;
 			case 5: listOfVertices.get(4).setPositionRef(0);
+					currencyName = "CHF";
 					break;
 			case 6: listOfVertices.get(5).setPositionRef(0);
+					currencyName = "CAD";
 					break;
 			case 7: listOfVertices.get(6).setPositionRef(0);
+					currencyName = "AUD";
 					break;
 			case 8: listOfVertices.get(7).setPositionRef(0);
+					currencyName = "HKD";
 					break;
 			default: System.out.println("I think you put in an incorrect number. ;)");
             		break;
@@ -108,9 +147,37 @@ public class ArbitrageOppurtunity
 		Map<Vertex, Vertex> pred = new HashMap<Vertex, Vertex>();
 		Map<Vertex, Double> dist = new HashMap<Vertex, Double>();
 		
-		dijkstrasAlgorithm(exchangeRates, pred, dist);
+		// runs the main part of the project
+		System.out.println("\n\nOur suggestion for the best profit is to convert to: ");
+		double profit = dijkstrasAlgorithm(exchangeRates, pred, dist);
+		System.out.println("Then back to " + currencyName + "!");
 		
-		System.out.println("Our suggestion for the best profit is" + );
+		System.out.println("\nWould you like to see what kind of profit you'll make? (1 for yes or 0 to exit)" );
+		userInput = keyboard.nextInt();
+		
+		if(userInput == 0)
+		{
+			System.exit(0);
+		}
+		else if(userInput == 1)
+		{
+			System.out.print("\nEnter the amount of money you "
+					+ "plan to start \nwith (numbers only please and at least more than 100): " );
+			double userMoney = keyboard.nextDouble();
+			
+			profit *= userMoney;
+			
+			System.out.println("\nYou will make: " + profit);
+			System.out.printf("Thats %.2f %s of profit!", profit - userMoney, currencyName);
+		}
+		else
+		{
+			System.out.println("I'm guessing you want to exit? Good bye!");
+			System.exit(0);
+		}
+		
+		keyboard.close();
+		
 	}
 	
 	
@@ -126,7 +193,7 @@ public class ArbitrageOppurtunity
 	 * @param pred The output array to contain the predecessors in the shortest path
 	 * @param dist Output array to contain the distance in the shortest path
 	 */
-    public static void dijkstrasAlgorithm(Graph graph, Map<Vertex, Vertex> pred, Map<Vertex, Double> dist)
+    public static double dijkstrasAlgorithm(Graph graph, Map<Vertex, Vertex> pred, Map<Vertex, Double> dist)
     {
     	int numV = graph.getNumV();
     	Vertex start = Graph.findStart(graph);
@@ -184,7 +251,7 @@ public class ArbitrageOppurtunity
     		// only prints out if second transition made better profit
     		if(start != largestProfit)
     		{
-    			System.out.println(largestProfit);
+    			System.out.println("----> " + largestProfit);
     		}
     		
     		currentCurrency = graph.getWeight(start, largestProfit);
@@ -211,5 +278,7 @@ public class ArbitrageOppurtunity
     		
     		count++;
     	}
+    	
+    	return profit;
     }
 }
