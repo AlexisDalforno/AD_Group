@@ -15,6 +15,13 @@ public class Vertex
     private String name;
     private int positionReference;
     
+    // NAME CONSTRUCTOR
+    public Vertex(String name) 
+    {
+        setName(name);
+        setPositionRef(-1);
+    }
+    
     // FULL CONSTRUCTOR
     public Vertex(String name, int pr) 
     {
@@ -39,7 +46,7 @@ public class Vertex
 		this.name = name;
 	}
 	
-    private void setPositionRef(int pr) 
+    public void setPositionRef(int pr) 
     {
 		this.positionReference = pr;
 		
