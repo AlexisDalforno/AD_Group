@@ -1,1 +1,2 @@
-# AD_Group
+# Arbitrage Oppurtunity and Fastest Path Algorithms
+My first ever Java project utilizing Graph Object and Djikstra's shortest path algorithm to calculate the fastest way for someone to make the most profit through currency exchange. It is not an accurate usage of currency exchange as it doesn't account for taxes and doesn't update based on current exchange rates. Just an example situation utilizing a common Java concept. 
